@@ -12,6 +12,8 @@ import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
 import wandb
+from wandb_osh.hooks import TriggerWandbSyncHook
+trigger_sync = TriggerWandbSyncHook()
 wandb.login()
 wandb.init(project="jztest", entity="barthelemymp")
 config_dict = {
@@ -78,6 +80,7 @@ def test(args, model, device, test_loader):
         test_loss, correct, len(test_loader.dataset),
         100. * correct / len(test_loader.dataset)))
     wandb.log({"avg_e":test_loss, "avg_a":correct})
+    trigger_sync() 
 
 
 

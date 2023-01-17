@@ -12,6 +12,12 @@ import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
 import wandb
+wandb.login()
+wandb.init(project="jztest", entity="barthelemymp")
+config_dict = {
+     'num_attn_heads':  4,
+}
+wandb.config.update(config_dict) 
 
 class Net(nn.Module):
     def __init__(self):
@@ -71,6 +77,8 @@ def test(args, model, device, test_loader):
     print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
         test_loss, correct, len(test_loader.dataset),
         100. * correct / len(test_loader.dataset)))
+    wandb.log({"avg_e":test_loss, "avg_a":correct})
+
 
 
 def main():

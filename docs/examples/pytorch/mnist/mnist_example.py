@@ -125,6 +125,7 @@ def main():
         train(args, model, device, train_loader, optimizer, epoch)
         test(args, model, device, test_loader)
         scheduler.step()
+        print("test")
 
     if args.save_model:
         torch.save(model.state_dict(), "mnist_cnn.pt")

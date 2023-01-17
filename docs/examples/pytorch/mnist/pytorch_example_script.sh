@@ -15,6 +15,7 @@ cd ${SLURM_SUBMIT_DIR}
 export WANDB_MODE="offline"
 module purge
 module load pytorch-gpu/py3/1.11.0
+pip install wandb-osh
 ###module load pytorch-gpu/py3/1.4.0 
 
 python ./mnist_example.py 

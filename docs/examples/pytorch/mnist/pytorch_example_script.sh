@@ -14,8 +14,8 @@ set -x
 cd ${SLURM_SUBMIT_DIR}
 
 module purge
-module load pytorch-gpu/py3/1.11.0
-##module load pytorch-gpu/py3/1.4.0 
+###module load pytorch-gpu/py3/1.11.0
+odule load pytorch-gpu/py3/1.4.0 
 
 python ./mnist_example.py 
 

@@ -15,6 +15,9 @@ cd ${SLURM_SUBMIT_DIR}
 export WANDB_MODE="offline"
 module purge
 module load pytorch-gpu/py3/1.11.0
+module load anaconda-py3/2021.05
+
+conda activate Barth
 
 ###module load pytorch-gpu/py3/1.4.0 
 

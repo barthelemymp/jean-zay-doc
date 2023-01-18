@@ -13,13 +13,6 @@ from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
 import wandb
 from wandb_osh.hooks import TriggerWandbSyncHook
-trigger_sync = TriggerWandbSyncHook()
-wandb.login()
-wandb.init(project="jztest", entity="barthelemymp")
-config_dict = {
-     'num_attn_heads':  4,
-}
-wandb.config.update(config_dict) 
 
 class Net(nn.Module):
     def __init__(self):
@@ -143,4 +136,12 @@ def main():
 
 
 if __name__ == '__main__':
+    trigger_sync = TriggerWandbSyncHook()
+    wandb.login()
+    wandb.init(project="jztest", entity="barthelemymp")
+    config_dict = {
+        'num_attn_heads':  4,
+    }
+    wandb.config.update(config_dict) 
     main()
+    wandb.finish()

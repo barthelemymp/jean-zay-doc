@@ -9,7 +9,7 @@
 #SBATCH --time=3:00:00              # maximum execution time (HH:MM:SS)
 #SBATCH --output=pytorch_mnist%j.out # output file name
 #SBATCH --error=pytorch_mnist%j.err  # error file name
-
+#SBATCH --array=4,6,8 
 set -x
 cd ${SLURM_SUBMIT_DIR}
 export WANDB_MODE="offline"
@@ -19,6 +19,7 @@ module load anaconda-py3/2021.05
 conda activate /gpfswork/rech/mdb/urz96ze/miniconda3/envs/Barth
 module load pytorch-gpu/py3/1.11.0
 ###module load pytorch-gpu/py3/1.4.0 
+### for i in 4 8 12 16; do
+###     python ./mnist_example.py --batch-size $i &
 
-python ./mnist_example.py 
-
+python ./mnist_example.py --batch-size ${SLURM_ARRAY_TASK_ID}

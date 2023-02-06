@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=pytorch_mnist     # job name
-#SBATCH --ntasks=1                   # number of MP tasks
-#SBATCH --ntasks-per-node=1          # number of MPI tasks per node
-#SBATCH --gres=gpu:1                 # number of GPUs per node
+#SBATCH --ntasks=4                   # number of MP tasks
+#SBATCH --ntasks-per-node=4          # number of MPI tasks per node
+#SBATCH --gres=gpu:4                 # number of GPUs per node
 #SBATCH --cpus-per-task=10           # number of cores per tasks
 #SBATCH --hint=nomultithread         # we get physical cores not logical
 #SBATCH --distribution=block:block   # we pin the tasks on contiguous cores

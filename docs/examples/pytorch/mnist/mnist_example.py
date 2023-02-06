@@ -123,6 +123,7 @@ def main():
     wandb.config.update({"batchsize": args.batch_size})
 
     model = Net().to(device)
+    print(model.device)
     optimizer = optim.Adadelta(model.parameters(), lr=args.lr)
 
     scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)
